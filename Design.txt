@@ -1,0 +1,27 @@
+
+
+Ships:
+	nameType = the name of the actual ship class. ie Republic Cruiser
+	name	 = picked from themed list (xml) 
+	
+Supply: Replenishes only at base.  
+	When out:
+		Missiles and Fighters cannot deploy.
+		Speed reduced
+		
+		
+Power: Ships have a maximum power output. Split between:
+	Shielding - useful at range only.  Deflect at angle
+		Only function for frontal fire.
+	Weapons   - increase fire rate. Increase penetration but not damage.
+		Weapons on all size, majority on front.
+			Front have triple the range of side weapons.
+			Penetration decreases with range.
+		Types:
+			Laser
+			Missile - Longer range, use supply, intercepted by fighters/escorts
+			
+	
+	
+	
+penetration decided by guns not by shields.
