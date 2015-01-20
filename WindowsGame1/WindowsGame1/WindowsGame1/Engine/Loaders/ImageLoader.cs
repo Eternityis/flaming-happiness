@@ -16,7 +16,20 @@ namespace WindowsGame1.Engine.Handlers
             content.RootDirectory = "Content";
 
 
-
+            foreach (Screens screen in Lists.ScreenList) //Splash, main menu background, stuff like that
+            {
+                try
+                {
+                    screen.screenTexture = content.Load<Texture2D>("Screens/" + screen.screenName);
+                    Console.WriteLine("Loaded Screen: " + screen.screenName);
+                }
+                catch
+                {
+                    Console.WriteLine("Screen: " + screen.screenName + " has failed to load!");
+                    //FNF. ignoring for now.
+                }
+                 
+            }
 
 
 

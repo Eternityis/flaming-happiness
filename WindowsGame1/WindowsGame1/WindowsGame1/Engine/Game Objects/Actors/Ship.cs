@@ -1,20 +1,24 @@
 ﻿using System;
-
+using WindowsGame1.Engine.Game_Objects;
 using WindowsGame1.Engine.Handlers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace WindowsGame1.Engine.Actors //"entities" make it sound like sci fi.  "actors" encompasses that perfect mix where you arent quite sure if its an rpgmaker rip off or a porno
 	{
-	abstract public class Ship
+	 abstract public class Ship : AffiliationClass
 	{
 
-	public Texture2D sprite; //Single sprite for now.
-	public Texture2D damagedSprite;
-	public Texture2D veryDamagedSprite;
-	public Texture2D deadSprite;
+//Graphics
+		 public Texture2D sprite { get; set; } //Single sprite for now.
+		 public Texture2D damagedSprite { get; set; }
+		 public Texture2D veryDamagedSprite { get; set; }
+		 public Texture2D deadSprite { get; set; }
+		 public Texture2D engineGlow { get; set; }
+		 public Texture2D thrusterglow { get; set; }
+		 public Rectangle shipRect { get; set; }
 
-	public	enum Penetration
+		 public	enum Penetration
 		{
 LOW,
 MEDIUM,
@@ -32,59 +36,83 @@ CARRIER,
 FIGHTER
 		}
 
-	public	enum Affiliation
-		{
-EMPIRE,
-ALLIANCE
-		}
-public Affiliation affiliation { get; set; }
+
 public ShipType shipType { get; set; }
    
 	 public string shipClass{ get; set; } //name displayed, ie: Cruiser
-	  public abstract string shipName { get; set; } //custom name, "IS Bismark"
+	 public   string shipName { get; set; } //custom name, "IS Bismark"
 
 //build cost
- public abstract int materialCost{ get; set; }
- public abstract int crewCost{ get; set; }
- public abstract int wealthCost{ get; set; }
+ public   int materialCost{ get; set; }
+ public   int crewCost{ get; set; }
+ public   int wealthCost{ get; set; }
 
 //bools
-		  public abstract bool isDead { get; set; }
-		  public abstract bool isDamaged { get; set; }//display damagedSprite
-		  public abstract bool isVeryDamaged{ get; set; } //display veryDamagedSprite
-		  public abstract bool isShielded{ get; set; } //has shields active
-		  public abstract bool isArmed{ get; set; }    //carries weapons
-		  public abstract bool isDisabled{ get; set; } //cant move, shoot etc
-		  public abstract bool isDisarmed{ get; set; } //fire control hit and can't shoot
-		  public abstract bool isImmobillized{ get; set; } //engine hit and can't move
-		  public abstract bool isSupplyDepleted{ get; set; }
+		  public   bool isDead { get; set; }
+		  public   bool isDamaged { get; set; }//display damagedSprite
+		  public   bool isVeryDamaged{ get; set; } //display veryDamagedSprite
+		  public   bool isShielded{ get; set; } //has shields active
+		  public   bool isArmed{ get; set; }    //carries weapons
+		  public   bool isDisabled{ get; set; } //cant move, shoot etc
+		  public   bool isDisarmed{ get; set; } //fire control hit and can't shoot
+		  public   bool isImmobillized{ get; set; } //engine hit and can't move
+		  public   bool isSupplyDepleted{ get; set; }
 
 //stats
-		  public abstract int hp{ get; set; }
-		  public abstract int shielding{ get; set; } //maximum range at which shields have a 50% chance of working
-		  public abstract int supply{ get; set; }    //total 
-		  public abstract int supplyPerShot{ get; set; } //base supply use per shot
-		  public abstract int speed{ get; set; } //current speed
-		  public abstract int maxSpeed{ get; set; } //maximum speed
+		  public   int hp{ get; set; }
+		  public   int shielding{ get; set; } //maximum range at which shields have a 50% chance of working
 
 
-		 public abstract  Vector2 location{ get; set; } //location of ship
+//Supply
+		  public   int supply{ get; set; }    //total 
+		  public   int supplyPerShot{ get; set; } //base supply use per shot
+		  public   int missileStock{ get; set; }
+		  public int maxMissileStock { get; set; }
+		  public int crew { get; set; }
+		 public int maxCrew { get; set; }
+
+
+
+//Spawning
+		  public    Vector2 location{ get; set; } //location of ship
+
+//Movement
+		  public   int speed{ get; set; } //current speed
+		  public   int maxSpeed{ get; set; } //maximum speed forward
+		  public int heading { get; set; } //direction the ship is facing
+	//Physics based movement
+		  public  struct Impulse
+		  {
+			  public int force;
+			  public int duration;
+			  public int heading;
+		  }
+
+
+
 
 //weapons
 	//Lasers
 		//forward
-		  public abstract int forwardGuns{ get; set; } //number of
-		  public abstract int forwardDamage{ get; set; } //damage each
-		Penetration forwardPenetration{ get; set; } //penetrating power 
+		  public   int forwardGuns{ get; set; } //number of
+		  public   int forwardDamage{ get; set; } //damage each
+	public	Penetration forwardPenetration{ get; set; } //penetrating power 
 		//side
-		  public abstract int sideGuns{ get; set; } //number of
-		  public abstract int sideDamage{ get; set; } //damage each
-		Penetration sidePenetration{ get; set; } //penetrating power 
+		  public   int sideGuns{ get; set; } //number of
+		  public   int sideDamage{ get; set; } //damage each
+	public	Penetration sidePenetration{ get; set; } //penetrating power 
 	//Missiles
-		  public abstract int missileRange;
-		  public abstract bool isMissileAuthorized;
-		  public abstract int missileDamage{ get; set; }
-		  public abstract int missileStock{ get; set; }
+		  public int missileRange { get; set; }
+		  public bool isMissileAuthorized { get; set; }
+		  public   int missileDamage{ get; set; }
+
+
+//Combat Settings
+public bool isHeadingLocked { get; set; } //wont turn when moving, reduces speed all directions but forward by 60%
+public   bool isFireAtWill { get; set; }
+		 public bool isReducedSpeed { get; set; } //Ship moves at 75% speed
+	}
+
 
 
 
@@ -97,4 +125,4 @@ public ShipType shipType { get; set; }
 
 
 	}
-	}
+	

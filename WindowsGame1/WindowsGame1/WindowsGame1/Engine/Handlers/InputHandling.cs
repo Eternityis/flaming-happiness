@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using WindowsGame1.Engine.Actors;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace WindowsGame1.Engine.Handlers
     {
@@ -46,6 +48,38 @@ namespace WindowsGame1.Engine.Handlers
            return false;
        }
 
+       public static bool leftMouseButtonHasChanged()
+       {
+           if (oldMouseHandler.LeftButton == ButtonState.Pressed && mouseHandler.LeftButton == ButtonState.Released)
+           {
+               return true;
+           }
+           return false;
+       }
+
+       public static bool rightMouseButtonHasChanged()
+       {
+           if (oldMouseHandler.RightButton == ButtonState.Pressed && mouseHandler.RightButton == ButtonState.Released)
+           {
+               return true;
+           }
+           return false;
+       }
+
+
+       public static void checkSelected()
+       {
+           if (mouseButtonHasChanged())
+           {
+               Vector2 selectedLocation = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
+               if (leftMouseButtonHasChanged())
+               {
+                   SelectionHandling.checkSelectionAgainstShipRects(selectedLocation);
+
+               }
+           }
+       }
+
        public static void handleInput()
        {
  
@@ -53,45 +87,55 @@ namespace WindowsGame1.Engine.Handlers
            oldMouseHandler = mouseHandler;
            setInputState();
            switch (SceneHandling.currentScene)
-           {
-case SceneHandling.Scenes.Splash:
+               {
+               case SceneHandling.Scenes.Splash:
                    if (inputHasChanged())
-                   {
+                       {
                        SceneHandling.advanceScene();
-                   }
+                       }
                    break;
 
-case SceneHandling.Scenes.MainMenu:  //TODO add support for menu and button clicks (add a detector)
+               case SceneHandling.Scenes.MainMenu:  //TODO add support for menu and button clicks (add a detector)
                    if (inputHasChanged())
-                   {
+                       {
                        SceneHandling.advanceScene();
-                   }
+                       }
                    break;
 
-case SceneHandling.Scenes.CharacterSelection:
+               case SceneHandling.Scenes.CharacterSelection:
                    if (inputHasChanged())
-                   {
+                       {
                        SceneHandling.advanceScene();
-                   }
+                       }
                    break;
 
-case SceneHandling.Scenes.Ingame:
+               case SceneHandling.Scenes.Ingame:
+                       if (buttonWasPressed(Keys.P))
+                       {
+                           SceneHandling.setScene(SceneHandling.Scenes.Paused);
+                       }
+
+                   if (buttonWasPressed(Keys.W))
+                       {
+
+                       }
+                   if (leftMouseButtonHasChanged())
+                       {
+                           SelectionHandling.checkSelectionAgainstShipRects(new Vector2(Mouse.GetState().X, Mouse.GetState().Y));
+                       }
+                   break;
+
+
+               case SceneHandling.Scenes.Paused:
                    if (buttonWasPressed(Keys.P))
-                   {
-                       SceneHandling.setScene(SceneHandling.Scenes.Paused);
-                   }
-                   break;
-
-case SceneHandling.Scenes.Paused:
-                   if (buttonWasPressed(Keys.P))
-                   {
+                       {
                        SceneHandling.setScene(SceneHandling.Scenes.Ingame);
-                   }
+                       }
                    break;
 
-case SceneHandling.Scenes.TESTZONE:
+               case SceneHandling.Scenes.TESTZONE:
                    break;
-           }
+               }
 
 
        }

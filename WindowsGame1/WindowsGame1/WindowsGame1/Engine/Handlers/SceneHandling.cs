@@ -2,7 +2,7 @@
 
 namespace WindowsGame1.Engine.Handlers
     {
-   static class SceneHandling  //this class contains the gameloops, segregated by menu to simplify input control
+ public  static class SceneHandling  //this class contains the gameloops, segregated by menu to simplify input control
         {
 
 

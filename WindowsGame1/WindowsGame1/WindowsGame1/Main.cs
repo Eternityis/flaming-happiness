@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using WindowsGame1.Engine;
+using WindowsGame1.Engine.Actors;
 using WindowsGame1.Engine.Handlers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
@@ -19,6 +20,7 @@ namespace WindowsGame1
     public class Main : Microsoft.Xna.Framework.Game
         {
       public static GraphicsDeviceManager graphics;
+      public Rectangle backgroundRect;
       public  SpriteBatch spriteBatch;  //not used and can probably remove soon, but leave for now, this is all just default xna code. I offloaded this to a seperate class.
 
         public Main()
@@ -30,27 +32,18 @@ namespace WindowsGame1
             Content.RootDirectory = "Content";  //not used, we can probably remove soon, but leave for now, this is all just default xna code. Offloaded to ImageLoader.cs
             }
 
-        /// <summary>
-        /// Allows the game to perform any initialization it needs to before starting to run.
-        /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
-        /// and initialize them as well.
-        /// </summary>
+
         protected override void Initialize()
             {
             // TODO: Add your initialization logic here
             Console.WriteLine("Initializing...");
+            Screens.generateScreens(); //pregens the splash screen
             SceneHandling.currentScene = SceneHandling.Scenes.Splash; //set initial screen to splash.  It will do this by default anyway, but just to be safe.
-            Rectangle backRectangle = new Rectangle(graphics.PreferredBackBufferWidth/2, graphics.PreferredBackBufferHeight/2, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+            backgroundRect = new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+            
             base.Initialize();
             Console.WriteLine("Initialization Complete");
             }
-
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
-
 
 
         protected override void LoadContent()  //This section is shit and should be offloaded to ImageLoader.cs otherwise things get really fucking messy
@@ -62,20 +55,12 @@ namespace WindowsGame1
             // TODO: use this.Content to load your game content here <-- dont believe their lies
             }
 
-        /// <summary>
-        /// UnloadContent will be called once per game and is the place to unload
-        /// all content.
-        /// </summary>
         protected override void UnloadContent()
             {
-            // TODO: Unload any non ContentManager content here
+            // TODO: Unload any non ContentManager content here  <-- Nah
             }
 
-        /// <summary>
-        /// Allows the game to run logic such as updating the world,
-        /// checking for collisions, gathering input, and playing audio.
-        /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+
         protected override void Update(GameTime gameTime)
             {
 
@@ -112,7 +97,7 @@ namespace WindowsGame1
 //GraphicsDevice.Clear(Color.White);
 spriteBatch.Begin();
 
-
+spriteBatch.Draw(ScreenHandling.handleScreen().screenTexture, backgroundRect, Color.White );
 
 
 
@@ -131,7 +116,7 @@ float frameRate = 1 / (float)gameTime.ElapsedGameTime.TotalSeconds; //calculates
 Console.WriteLine("Framerate: " + frameRate);
             base.Draw(gameTime);
          Console.WriteLine("Draw Loop End");
-      // Thread.Sleep(2000);
+      // Thread.Sleep(1000); // for testing purposes.  Use to review whats been draw each frame by slowing things down.  Essentially locks to 1fps
             }
         }
     }
