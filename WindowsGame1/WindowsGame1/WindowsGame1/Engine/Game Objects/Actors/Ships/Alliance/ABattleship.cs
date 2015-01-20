@@ -19,7 +19,7 @@ namespace WindowsGame1.Engine.Game_Objects.Actors.Ships.Alliance
 
 		//Constructor
 
-		public ABattleship(Vector2 spawnpoint)
+		public ABattleship(Point spawnpoint)
 		{
 
 
@@ -81,7 +81,8 @@ isHeadingLocked = false;
 
 
 
-
+//Physics
+		    mass = 1000;
 
 
 shipRect = new Rectangle((int)location.X, (int)location.Y, Constants.BattleshipWidth, Constants.BattleshipLength);

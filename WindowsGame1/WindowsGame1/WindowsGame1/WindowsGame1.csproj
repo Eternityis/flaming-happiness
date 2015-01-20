@@ -108,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Engine\Game Objects\AffiliationClass.cs" />
+    <Compile Include="Engine\Game Objects\Thruster.cs" />
     <Compile Include="Engine\Handlers\Logic\MovementLogic.cs" />
     <Compile Include="Engine\Handlers\SelectionHandling.cs" />
     <Compile Include="Engine\Screens.cs" />

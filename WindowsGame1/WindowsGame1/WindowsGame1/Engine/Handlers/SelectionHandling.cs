@@ -13,14 +13,14 @@ namespace WindowsGame1.Engine.Handlers
 
 
 
-        public static void checkSelectionAgainstShipRects(Vector2 selection)
+        public static void checkSelectionAgainstShipRects(Point selection)
         {
 Player.selectedShips.Clear();
             foreach (Ship ship in Lists.ShipList)
             {
                 if (ship.affiliation == Player.affiliation) //only select own ships
                 {
-                    if (ship.shipRect.Contains(PointExt.ToPoint(selection)))
+                    if (ship.shipRect.Contains(selection))
                     {
                         Player.selectedShips.Add(ship);
                     }

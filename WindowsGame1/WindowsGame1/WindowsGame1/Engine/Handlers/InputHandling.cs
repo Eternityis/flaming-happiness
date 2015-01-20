@@ -69,15 +69,24 @@ namespace WindowsGame1.Engine.Handlers
 
        public static void checkSelected()
        {
-           if (mouseButtonHasChanged())
-           {
-               Vector2 selectedLocation = new Vector2(Mouse.GetState().X, Mouse.GetState().Y);
+               Point selectedLocation = new Point(Mouse.GetState().X, Mouse.GetState().Y);
                if (leftMouseButtonHasChanged())
                {
                    SelectionHandling.checkSelectionAgainstShipRects(selectedLocation);
 
                }
-           }
+               if (rightMouseButtonHasChanged())
+               {
+                   if (Player.selectedShips.Count != 0)
+                   {
+                       //apply movement logic to ship with selectedLocation as target
+                       foreach (Ship ship in Player.selectedShips)
+                       {
+                           ship.targetPoint = selectedLocation; //sets clicked location as the ships target
+                       }
+                   }
+               }
+           
        }
 
        public static void handleInput()
@@ -119,9 +128,9 @@ namespace WindowsGame1.Engine.Handlers
                        {
 
                        }
-                   if (leftMouseButtonHasChanged())
+                   if (mouseButtonHasChanged())
                        {
-                           SelectionHandling.checkSelectionAgainstShipRects(new Vector2(Mouse.GetState().X, Mouse.GetState().Y));
+                           checkSelected();
                        }
                    break;
 
