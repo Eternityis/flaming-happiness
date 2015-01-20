@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Math;
 using WindowsGame1.Engine.Actors;
 using Microsoft.Xna.Framework;
 
@@ -14,7 +15,7 @@ namespace WindowsGame1.Engine.Handlers.Logic
 
        public static void applyMovementLogic(Ship ship, Point location, Point target)
        {
-           ship.targetHeading = //TODO
+           ship.targetHeading = (float)Atan2(location.X - target.X, location.Y - target.Y);
            ship.heading = ship.targetHeading; //TODO replace with rotatino and stuff, just for testing.
            if (ship.isFacingTarget() && !ship.disabledF)
            {
