@@ -10,3 +10,4 @@ Content\Tiles\Wall.xnb
 Content\Tiles\Dirt.xnb
 Content\Screens\ingame.xnb
 Content\Screens\mainmenu.xnb
+Content\Ships\Alliance\ABattleship\aBattleship.xnb

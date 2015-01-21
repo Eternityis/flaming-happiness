@@ -1,5 +1,6 @@
 ﻿using System;
 using WindowsGame1.Engine.Game_Objects;
+using WindowsGame1.Engine.Game_Objects.Actors.Ships.Alliance;
 using WindowsGame1.Engine.Handlers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -11,12 +12,13 @@ namespace WindowsGame1.Engine.Actors
 	{
 
 //Graphics
-		public Texture2D sprite { get; set; } //Single sprite for now.
-		public Texture2D damagedSprite { get; set; }
-		public Texture2D veryDamagedSprite { get; set; }
-		public Texture2D deadSprite { get; set; }
-		public Texture2D engineGlow { get; set; }
-		public Texture2D thrusterglow { get; set; }
+		static public Texture2D sprite { get; set; } //Single sprite for now.
+         public string spritePath{get; set;}
+		static public Texture2D damagedSprite { get; set; }
+		static public Texture2D veryDamagedSprite { get; set; }
+		static public Texture2D deadSprite { get; set; }
+		static public Texture2D engineGlow { get; set; }
+		static public Texture2D thrusterglow { get; set; }
 		public Rectangle shipRect { get; set; }
 
 		public enum Penetration
@@ -37,12 +39,12 @@ namespace WindowsGame1.Engine.Actors
 			FIGHTER
 		}
 
-	    public enum TurnDir
-	    {
-	        LEFT,
-RIGHT,
-NULL
-	    }
+		public enum TurnDir
+		{
+			LEFT,
+			RIGHT,
+			NULL
+		}
 
 public TurnDir turnDir { get; set; }
 
@@ -51,6 +53,8 @@ public TurnDir turnDir { get; set; }
 
 		public string shipClass { get; set; } //name displayed, ie: Cruiser
 		public string shipName { get; set; } //custom name, "IS Bismark"
+public string folderName { get; set; }
+public string fileName { get; set; }
 
 //build cost
 		public int materialCost { get; set; }
@@ -90,7 +94,7 @@ public TurnDir turnDir { get; set; }
 		public int speed { get; set; } //current speed
 		public int maxSpeed { get; set; } //maximum speed forward
 		public float heading { get; set; } //direction the ship is facing
-        public float targetHeading{get; set; }
+		public float targetHeading{get; set; }
 		//Physics based movement
 		public struct Impulse
 		{
@@ -118,11 +122,11 @@ public TurnDir turnDir { get; set; }
 		public float accelP { get; set; }
 		public float accelS { get; set; }
 		public float accelA { get; set; }
-        public float mAccelF { get; set; }//max
+		public float mAccelF { get; set; }//max
 		public float mAccelP { get; set; }
 		public float mAccelS { get; set; }
 		public float mAccelA { get; set; }
-        public float speedF { get; set; }//max
+		public float speedF { get; set; }//max
 		public float speedP { get; set; }
 		public float speedS { get; set; }
 		public float speedA { get; set; }
@@ -132,7 +136,7 @@ public TurnDir turnDir { get; set; }
 		public float RotSpeed { get; set; } //rotational speed
 		public float MRotSpeed { get; set; } //maximum
 
-        
+		
 
 
 //weapons
@@ -160,10 +164,15 @@ public TurnDir turnDir { get; set; }
 
 //public methods
 
-	    public bool isFacingTarget()
-	    {
-	        return (heading == targetHeading);
-	    }
+		public bool isFacingTarget()
+		{
+			return (heading == targetHeading);
+		}
+
+		public static void generateShipClassList()
+		{
+			Lists.ShipClassList.Add(new ABattleship());
+		}
 
 
 

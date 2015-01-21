@@ -97,7 +97,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Ships\Alliance\ABattleship\" />
     <Folder Include="Ships\Empire\EBattleship\" />
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +116,13 @@
   <ItemGroup>
     <Compile Include="Screens\mainmenu.png">
       <Name>mainmenu</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Ships\Alliance\ABattleship\aBattleship.png">
+      <Name>aBattleship</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

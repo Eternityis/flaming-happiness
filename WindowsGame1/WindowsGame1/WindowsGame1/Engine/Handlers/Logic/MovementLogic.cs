@@ -139,6 +139,7 @@ namespace WindowsGame1.Engine.Handlers.Logic
                 //handle rotation
             }
 
+            ship.shipRect.Offset((int)ship.speedF - (int)ship.speedA, (int)ship.speedS - (int)ship.speedP);
 
         Console.WriteLine("Processed movement for " + ship.shipName);
         }

@@ -23,6 +23,7 @@ Player.selectedShips.Clear();
                     if (ship.shipRect.Contains(selection))
                     {
                         Player.selectedShips.Add(ship);
+                        Console.WriteLine("Selected" + ship.shipClass);
                     }
                 }
             }

@@ -109,6 +109,15 @@
       <Output>C:\Users\CJ\Desktop\flaming-happines\flaming-happiness\WindowsGame1\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Screens\mainmenu.xnb</Output>
       <Time>2015-01-20T20:36:41.8671048-05:00</Time>
     </Item>
+    <Item>
+      <Source>Ships\Alliance\ABattleship\aBattleship.png</Source>
+      <Name>Ships\Alliance\ABattleship\aBattleship</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\CJ\Desktop\flaming-happines\flaming-happiness\WindowsGame1\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Ships\Alliance\ABattleship\aBattleship.xnb</Output>
+      <Time>2015-01-20T21:20:42.7413193-05:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID Null="true" />

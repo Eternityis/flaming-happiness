@@ -124,10 +124,10 @@ namespace WindowsGame1.Engine.Handlers
                            SceneHandling.setScene(SceneHandling.Scenes.Paused);
                        }
 
-                   if (buttonWasPressed(Keys.W))
-                       {
-
-                       }
+                   if (buttonWasPressed(Keys.OemPeriod))
+                   {
+                       new Game_Objects.Actors.Ships.Alliance.ABattleship(new Point(400, 400));
+                   }
                    if (mouseButtonHasChanged())
                        {
                            checkSelected();

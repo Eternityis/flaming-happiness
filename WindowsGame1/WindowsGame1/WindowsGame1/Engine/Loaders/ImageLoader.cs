@@ -33,6 +33,10 @@ namespace WindowsGame1.Engine.Handlers
 
 
 
+        Ship.sprite = content.Load<Texture2D>("Ships/Alliance/ABattleship/aBattleship");
+
+
+
 
 
 

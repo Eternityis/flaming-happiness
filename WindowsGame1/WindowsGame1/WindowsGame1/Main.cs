@@ -31,6 +31,7 @@ namespace WindowsGame1
             graphics.PreferredBackBufferHeight = 600;  
             graphics.PreferredBackBufferWidth = 800;
             Content.RootDirectory = "Content";  //not used, we can probably remove soon, but leave for now, this is all just default xna code. Offloaded to ImageLoader.cs
+            IsMouseVisible = true;
             }
 
 
@@ -39,6 +40,7 @@ namespace WindowsGame1
             // TODO: Add your initialization logic here
             Console.WriteLine("Initializing...");
             Screens.generateScreens(); //pregens the splash screen
+            Ship.generateShipClassList(); //pregens classes for sprite loading
             SceneHandling.currentScene = SceneHandling.Scenes.Splash; //set initial screen to splash.  It will do this by default anyway, but just to be safe.
             backgroundRect = new Rectangle(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
             
@@ -109,7 +111,10 @@ spriteBatch.Begin();
      {
          Console.WriteLine("screen draw error");
      }
-
+     foreach (Ship ship in Lists.ShipList)
+     {
+         spriteBatch.Draw(Ship.sprite, ship.shipRect, Color.White);
+     }
 
 
 Vector2 target = new Vector2(0, 0);
@@ -137,7 +142,7 @@ float frameRate = 1 / (float)gameTime.ElapsedGameTime.TotalSeconds; //calculates
 Console.WriteLine("Framerate: " + frameRate);
             base.Draw(gameTime);
          Console.WriteLine("Draw Loop End");
-      // Thread.Sleep(500); // for testing purposes.  Use to review whats been draw each frame by slowing things down.  Essentially locks to 1fps
+    //   Thread.Sleep(1000); // for testing purposes.  Use to review whats been draw each frame by slowing things down.  Essentially locks to 1fps
             }
         }
     }

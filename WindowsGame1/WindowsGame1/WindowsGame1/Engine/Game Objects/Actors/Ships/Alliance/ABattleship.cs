@@ -7,6 +7,8 @@ using WindowsGame1.Engine.Actors;
 using WindowsGame1.Engine.Handlers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
+
 
 namespace WindowsGame1.Engine.Game_Objects.Actors.Ships.Alliance
 	{
@@ -29,6 +31,10 @@ namespace WindowsGame1.Engine.Game_Objects.Actors.Ships.Alliance
 
 			shipClass = "Alliance Battleship";
  //shipName = Resources.Names.pickAName(Affiliation.ALLIANCE);
+		    spritePath = "Alliance/ABattleship/aBattleship";
+
+//GRAPHICS
+
 
 //build cost
  materialCost = 100;
@@ -92,10 +98,13 @@ Lists.ShipList.Add(this);
 
 		}//end of constructor
 
-		
+ public ABattleship()
+	    {
+	        
+	    }
 
 
-
+//public method
 
 
 

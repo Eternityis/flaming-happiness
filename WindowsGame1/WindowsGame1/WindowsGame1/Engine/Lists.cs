@@ -10,6 +10,7 @@ namespace WindowsGame1.Engine
         public static List<String> NameList = new List<string>();
         public static List<Screens> ScreenList = new List<Screens>(); 
         public static List<Ship> ShipList = new List<Ship>();
+        public static List<Ship> ShipClassList = new List<Ship>(); 
 
     }
 }
