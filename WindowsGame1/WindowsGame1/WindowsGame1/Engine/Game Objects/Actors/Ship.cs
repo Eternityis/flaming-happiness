@@ -88,7 +88,7 @@ public string fileName { get; set; }
 
 
 //Spawning
-		public Point location { get; set; } //location of ship
+		public Vector2 location { get; set; } //location of ship
 
 //Movement
 		public int speed { get; set; } //current speed

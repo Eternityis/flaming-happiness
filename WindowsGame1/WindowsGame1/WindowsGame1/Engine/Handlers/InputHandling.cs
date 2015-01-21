@@ -124,10 +124,17 @@ namespace WindowsGame1.Engine.Handlers
                            SceneHandling.setScene(SceneHandling.Scenes.Paused);
                        }
 
-                   if (buttonWasPressed(Keys.OemPeriod))
+                   if (buttonWasPressed(Keys.OemPeriod)) //TODO testing stuff
                    {
-                       new Game_Objects.Actors.Ships.Alliance.ABattleship(new Point(400, 400));
+                       new Game_Objects.Actors.Ships.Alliance.ABattleship(new Vector2(400, 400));
                    }
+                       if (buttonWasPressed(Keys.OemBackslash))//TODO
+                       {
+                           foreach (Ship ship in Lists.ShipList)
+                           {
+                               ship.targetHeading = 90;
+                           }
+                       }
                    if (mouseButtonHasChanged())
                        {
                            checkSelected();

@@ -21,7 +21,7 @@ namespace WindowsGame1.Engine.Game_Objects.Actors.Ships.Alliance
 
 		//Constructor
 
-		public ABattleship(Point spawnpoint)
+		public ABattleship(Vector2 spawnpoint)
 		{
 
 
@@ -61,7 +61,7 @@ supplyPerShot = 1; //base supply use per shot
 speed = 0; //current speed
 maxSpeed = 10; //maximum speed
 crew = crewCost;
-			maxCrew = crewCost;
+maxCrew = crewCost;
 
 location = spawnpoint;
 
@@ -76,8 +76,8 @@ sideGuns = 4; //number of
 sideDamage = 10; //damage each
 sidePenetration = Penetration.MEDIUM;//penetrating power 
 	//Missiles
- missileRange = 400;
-			isMissileAuthorized = Player.shipsSpawnMissileAuthorized;
+missileRange = 400;
+isMissileAuthorized = Player.shipsSpawnMissileAuthorized;
 missileDamage = 40;
 maxMissileStock = 12;
 missileStock = maxMissileStock;
@@ -88,7 +88,7 @@ isHeadingLocked = false;
 
 
 //Physics
-		    mass = 1000;
+mass = 1000;
 
 
 shipRect = new Rectangle((int)location.X, (int)location.Y, Constants.BattleshipWidth, Constants.BattleshipLength);

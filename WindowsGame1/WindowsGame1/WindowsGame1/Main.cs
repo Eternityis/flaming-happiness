@@ -102,6 +102,7 @@ namespace WindowsGame1
             Console.WriteLine("Draw Loop Begin");
 //GraphicsDevice.Clear(Color.White);
 spriteBatch.Begin();
+
      try
      {
          spriteBatch.Draw(ScreenHandling.handleScreen().screenTexture, backgroundRect, Color.White);
@@ -111,9 +112,11 @@ spriteBatch.Begin();
      {
          Console.WriteLine("screen draw error");
      }
-     foreach (Ship ship in Lists.ShipList)
+     
+    foreach (Ship ship in Lists.ShipList)
      {
-         spriteBatch.Draw(Ship.sprite, ship.shipRect, Color.White);
+         spriteBatch.Draw(Ship.sprite, ship.shipRect, null, Color.White, ship.heading/(float)57.2957795, new Vector2(0,0) , SpriteEffects.None, 0);
+        Console.WriteLine("ship target heading is "+ ship.targetHeading);
      }
 
 
