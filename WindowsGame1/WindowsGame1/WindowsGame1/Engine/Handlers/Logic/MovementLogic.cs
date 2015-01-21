@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using WindowsGame1.Engine.Actors;
 using Microsoft.Xna.Framework;
@@ -14,16 +15,31 @@ namespace WindowsGame1.Engine.Handlers.Logic
 
        public static void applyMovementLogic(Ship ship, Point location, Point target)
        {
-           ship.targetHeading = (float)Math.Atan2(target.X - location.X, target.Y - location.Y);
-           ship.heading = ship.targetHeading; //TODO replace with rotatino and stuff, just for testing.
-           if (ship.isFacingTarget() && !ship.disabledF)
+           try
            {
-               ship.thrustF = ship.mThrustF;
+               float conversion = (float) 57.2957795; //convert radians to degrees
+               ship.targetHeading = (float) Math.Atan2(target.X - location.X, target.Y - location.Y)*conversion;  //dtermine target heading
+               if (ship.targetHeading < 0)
+               {
+                   ship.targetHeading += 360; //converts negative to positive, kind of like Pharrel Williams
+               }
+               ship.heading = ship.targetHeading; //TODO replace with rotatino and stuff, just for testing.
+               //determine to turn clockwise or counterclockwise
+                
+               if (ship.isFacingTarget() && !ship.disabledF)
+               {
+                   ship.thrustF = ship.mThrustF;
+               }
+               else if (!ship.isFacingTarget())
+               {
+                   //cannot be reached currently TODO
+               }
            }
-           else if(!ship.isFacingTarget())
+           catch
            {
-//cannot be reached currently TODO
+               Console.WriteLine("Something fucked up in movement logic. " + location + "  " + target);
            }
+   
         }
 
 

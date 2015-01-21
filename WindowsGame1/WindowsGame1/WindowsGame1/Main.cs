@@ -98,11 +98,15 @@ namespace WindowsGame1
 spriteBatch.Begin();
 
 spriteBatch.Draw(ScreenHandling.handleScreen().screenTexture, backgroundRect, Color.White );
-Vector2 target = new Vector2(10, 1);
-Vector2 location = new Vector2(1,1);
+Vector2 target = new Vector2(0, 0);
+Vector2 location = new Vector2(0, 0);
      float targetHeading;
      float conversion = (float)57.2957795; //convert radians to degrees
      targetHeading = (float)Math.Atan2(target.X - location.X, target.Y - location.Y)*conversion; //TODO testing the formula
+     if (targetHeading < 0)
+     {
+         targetHeading += 360;
+     }
 Console.WriteLine(targetHeading);
 
 
@@ -119,7 +123,7 @@ float frameRate = 1 / (float)gameTime.ElapsedGameTime.TotalSeconds; //calculates
 Console.WriteLine("Framerate: " + frameRate);
             base.Draw(gameTime);
          Console.WriteLine("Draw Loop End");
-       Thread.Sleep(1000); // for testing purposes.  Use to review whats been draw each frame by slowing things down.  Essentially locks to 1fps
+    //   Thread.Sleep(1000); // for testing purposes.  Use to review whats been draw each frame by slowing things down.  Essentially locks to 1fps
             }
         }
     }
