@@ -24,6 +24,8 @@ namespace WindowsGame1.Engine
         public static void generateScreens()  //preload all screens, this is gonna get long so maybe offload later?
         {
             new Screens("splash", SceneHandling.Scenes.Splash,  true  );
+            new Screens("mainmenu", SceneHandling.Scenes.MainMenu,  false  );
+            new Screens("ingame", SceneHandling.Scenes.Ingame, false);
         }
 
         public Screens(string newName, SceneHandling.Scenes newScene, bool newActive)

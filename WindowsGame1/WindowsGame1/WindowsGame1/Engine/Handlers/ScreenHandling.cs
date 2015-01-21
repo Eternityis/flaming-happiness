@@ -13,7 +13,7 @@ namespace WindowsGame1.Engine.Handlers
       foreach (Screens screen in Lists.ScreenList)
      {   
          
-         if (screen.isActive && screen.screenTexture != null && screen.relevantScene == SceneHandling.currentScene)
+         if (screen.screenTexture != null && screen.relevantScene == SceneHandling.currentScene)
          {
              return screen;
          }

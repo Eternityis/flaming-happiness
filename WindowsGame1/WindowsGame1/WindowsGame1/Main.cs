@@ -100,8 +100,18 @@ namespace WindowsGame1
             Console.WriteLine("Draw Loop Begin");
 //GraphicsDevice.Clear(Color.White);
 spriteBatch.Begin();
+     try
+     {
+         spriteBatch.Draw(ScreenHandling.handleScreen().screenTexture, backgroundRect, Color.White);
 
-spriteBatch.Draw(ScreenHandling.handleScreen().screenTexture, backgroundRect, Color.White );
+     }
+     catch
+     {
+         Console.WriteLine("screen draw error");
+     }
+
+
+
 Vector2 target = new Vector2(0, 0);
 Vector2 location = new Vector2(0, 0);
      float targetHeading;
@@ -127,7 +137,7 @@ float frameRate = 1 / (float)gameTime.ElapsedGameTime.TotalSeconds; //calculates
 Console.WriteLine("Framerate: " + frameRate);
             base.Draw(gameTime);
          Console.WriteLine("Draw Loop End");
-    //   Thread.Sleep(1000); // for testing purposes.  Use to review whats been draw each frame by slowing things down.  Essentially locks to 1fps
+      // Thread.Sleep(500); // for testing purposes.  Use to review whats been draw each frame by slowing things down.  Essentially locks to 1fps
             }
         }
     }

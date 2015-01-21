@@ -91,6 +91,24 @@
       <Output>C:\Users\CJ\Desktop\flaming-happines\flaming-happiness\WindowsGame1\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Tiles\Dirt.xnb</Output>
       <Time>2014-12-03T02:16:43.5685133-05:00</Time>
     </Item>
+    <Item>
+      <Source>Screens\ingame.png</Source>
+      <Name>Screens\ingame</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\CJ\Desktop\flaming-happines\flaming-happiness\WindowsGame1\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Screens\ingame.xnb</Output>
+      <Time>2015-01-20T20:31:41.8754947-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Screens\mainmenu.png</Source>
+      <Name>Screens\mainmenu</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\CJ\Desktop\flaming-happines\flaming-happiness\WindowsGame1\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Screens\mainmenu.xnb</Output>
+      <Time>2015-01-20T20:36:41.8671048-05:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID Null="true" />

@@ -52,3 +52,5 @@ C:\Users\CJ\Desktop\flaming-happines\flaming-happiness\WindowsGame1\WindowsGame1
 C:\Users\CJ\Desktop\flaming-happines\flaming-happiness\WindowsGame1\WindowsGame1\WindowsGame1\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\CJ\Desktop\flaming-happines\flaming-happiness\WindowsGame1\WindowsGame1\WindowsGame1\obj\x86\Debug\WindowsGame1.exe
 C:\Users\CJ\Desktop\flaming-happines\flaming-happiness\WindowsGame1\WindowsGame1\WindowsGame1\obj\x86\Debug\WindowsGame1.pdb
+C:\Users\CJ\Desktop\flaming-happines\flaming-happiness\WindowsGame1\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Screens\ingame.xnb
+C:\Users\CJ\Desktop\flaming-happines\flaming-happiness\WindowsGame1\WindowsGame1\WindowsGame1\bin\x86\Debug\Content\Screens\mainmenu.xnb

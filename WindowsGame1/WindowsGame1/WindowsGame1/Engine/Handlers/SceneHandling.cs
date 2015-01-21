@@ -15,7 +15,7 @@ namespace WindowsGame1.Engine.Handlers
             CharacterSelection = 2, //This shouldnt be accessible more than once
             Ingame = 3,             //Whenever actually playing
             Paused = 25,             //pause menu
-            TESTZONE = 100            //if we need to test control configs or try weird shit do it here so we dont fuck up the rest of the code
+            TESTZONE = 100            //if we need to test control configs or try weird shit do it here so we dont mess up the rest of the code
         }
 
        public static Scenes currentScene = new Scenes(); //backing
