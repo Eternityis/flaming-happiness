@@ -20,16 +20,24 @@ namespace WindowsGame1.Engine.Handlers.Logic
                float conversion = (float) 57.2957795; //convert radians to degrees
                ship.targetHeading = (float) Math.Atan2(target.X - location.X, target.Y - location.Y)*conversion;  //dtermine target heading
                if (ship.targetHeading < 0)
-               {
+                  {
                    ship.targetHeading += 360; //converts negative to positive, kind of like Pharrel Williams
-               }
+                  }    
                ship.heading = ship.targetHeading; //TODO replace with rotatino and stuff, just for testing.
                //determine to turn clockwise or counterclockwise
+               if (!ship.isFacingTarget() && !ship.isHeadingLocked)
+              {
+                  if (Math.Abs(ship.heading - ship.targetHeading) > Math.Abs(ship.heading + 360 - ship.targetHeading))
+                  {
+                      ship.turnDir = Ship.TurnDir.RIGHT;
+                  }
+                  else
+                  {
+                      ship.turnDir = Ship.TurnDir.LEFT;
+                  }
                 
-               if (ship.isFacingTarget() && !ship.disabledF)
-               {
-                   ship.thrustF = ship.mThrustF;
-               }
+              }
+
                else if (!ship.isFacingTarget())
                {
                    //cannot be reached currently TODO
@@ -37,7 +45,7 @@ namespace WindowsGame1.Engine.Handlers.Logic
            }
            catch
            {
-               Console.WriteLine("Something fucked up in movement logic. " + location + "  " + target);
+               Console.WriteLine("Something messed up in movement logic. " + location + "  " + target);
            }
    
         }
@@ -45,6 +53,11 @@ namespace WindowsGame1.Engine.Handlers.Logic
 
         public static void processMovement(Ship ship)
         {
+            if (ship.isFacingTarget())
+            {
+                ship.turnDir = Ship.TurnDir.NULL;
+            }
+
 //calculate accelerations
             if (ship.thrustF != 0 && ship.speedF != ship.maxSpeed)
             {
@@ -120,6 +133,11 @@ namespace WindowsGame1.Engine.Handlers.Logic
                 ship.speedS = 0;
             }
 
+
+            if (ship.turnDir != Ship.TurnDir.NULL)
+            {
+                //handle rotation
+            }
 
 
         Console.WriteLine("Processed movement for " + ship.shipName);

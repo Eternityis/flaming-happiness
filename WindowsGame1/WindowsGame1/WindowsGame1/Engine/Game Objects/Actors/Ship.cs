@@ -37,6 +37,15 @@ namespace WindowsGame1.Engine.Actors
 			FIGHTER
 		}
 
+	    public enum TurnDir
+	    {
+	        LEFT,
+RIGHT,
+NULL
+	    }
+
+public TurnDir turnDir { get; set; }
+
 
 		public ShipType shipType { get; set; }
 

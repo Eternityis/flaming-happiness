@@ -6,6 +6,7 @@ using System.Threading;
 using WindowsGame1.Engine;
 using WindowsGame1.Engine.Actors;
 using WindowsGame1.Engine.Handlers;
+using WindowsGame1.Engine.Handlers.Logic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -67,7 +68,10 @@ namespace WindowsGame1
             // TODO: Gameloop
             SceneHandling.handleScene();  //the individual gameloops for the different menus etc should go in their own section of processScene()
             InputHandling.setInputState();
-
+            foreach (Ship ship in Lists.ShipList) //handle moving ships around
+            {
+                MovementLogic.processMovement(ship);
+            }
 
 
 
