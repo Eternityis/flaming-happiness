@@ -98,9 +98,12 @@ namespace WindowsGame1
 spriteBatch.Begin();
 
 spriteBatch.Draw(ScreenHandling.handleScreen().screenTexture, backgroundRect, Color.White );
-
-
-
+Vector2 target = new Vector2(10, 1);
+Vector2 location = new Vector2(1,1);
+     float targetHeading;
+     float conversion = (float)57.2957795; //convert radians to degrees
+     targetHeading = (float)Math.Atan2(target.X - location.X, target.Y - location.Y)*conversion; //TODO testing the formula
+Console.WriteLine(targetHeading);
 
 
 

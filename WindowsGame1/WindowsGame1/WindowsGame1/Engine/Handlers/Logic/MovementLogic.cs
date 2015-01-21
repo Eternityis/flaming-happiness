@@ -14,7 +14,7 @@ namespace WindowsGame1.Engine.Handlers.Logic
 
        public static void applyMovementLogic(Ship ship, Point location, Point target)
        {
-           ship.targetHeading = (float)Math.Atan2(location.X - target.X, location.Y - target.Y);
+           ship.targetHeading = (float)Math.Atan2(target.X - location.X, target.Y - location.Y);
            ship.heading = ship.targetHeading; //TODO replace with rotatino and stuff, just for testing.
            if (ship.isFacingTarget() && !ship.disabledF)
            {
