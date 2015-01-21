@@ -24,4 +24,9 @@ Power: Ships have a maximum power output. Split between:
 	
 	
 	
-penetration decided by guns not by shields.
+
+	
+	
+	f = m*a
+	thrust = mass*acceleration
+	acceleration = thrust/mass

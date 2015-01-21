@@ -91,6 +91,18 @@ isHeadingLocked = false;
 mass = 1000;
 
 
+//THRUSTER ASSEMBLY:
+
+this.thrusterList.Add(new Thruster(Thruster.Direction.A, 100 ));
+this.thrusterList.Add(new Thruster(Thruster.Direction.F, 50 ));
+this.thrusterList.Add(new Thruster(Thruster.Direction.P, 25 ));
+this.thrusterList.Add(new Thruster(Thruster.Direction.S, 25 ));
+
+
+
+
+
+
 shipRect = new Rectangle((int)location.X, (int)location.Y, Constants.BattleshipWidth, Constants.BattleshipLength);
 PurchaseHandling.handlePurchase(this);
 Lists.ShipList.Add(this);

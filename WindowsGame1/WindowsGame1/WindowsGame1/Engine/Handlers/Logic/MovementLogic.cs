@@ -1,15 +1,19 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using WindowsGame1.Engine.Actors;
+using WindowsGame1.Engine.Game_Objects;
 using Microsoft.Xna.Framework;
 
 namespace WindowsGame1.Engine.Handlers.Logic
 {
     public static class MovementLogic 
     {
+
+        public static List<Impulse> impulseList = new List<Impulse>(); 
 
 //applied to each ship each tick
 
@@ -57,7 +61,7 @@ namespace WindowsGame1.Engine.Handlers.Logic
             {
                 ship.turnDir = Ship.TurnDir.NULL;
             }
-
+/* 
 //calculate accelerations
             if (ship.thrustF != 0 && ship.speedF != ship.maxSpeed)
             {
@@ -133,6 +137,67 @@ namespace WindowsGame1.Engine.Handlers.Logic
                 ship.speedS = 0;
             }
 
+*/ //deprecated
+
+            foreach (Thruster thruster in ship.thrusterList)
+            {
+                if (thruster.isActive)
+                {
+                    float detHeading = 0;
+                switch (thruster.direction)
+                {
+
+                    case Thruster.Direction.F:
+                    {
+                        detHeading = ship.heading + 180;
+                            break;
+                            }
+                    case Thruster.Direction.A:
+                    {
+                        detHeading = ship.heading;
+                                break;
+                                }
+                    case Thruster.Direction.S:
+                    {
+                        detHeading = ship.heading - 90;
+                                    break;
+                                    }
+                    case Thruster.Direction.P:
+                    {
+                        detHeading = ship.heading + 90;
+                            break;
+                        }
+
+                    }
+                    impulseList.Add(new Impulse(thruster.thrust, detHeading));
+                }
+            }
+
+//apply forces
+         //use trig to determine how much to apply to vertical vs horizontal  ie. resolve forces 
+            foreach (Impulse impulse in impulseList)
+            {
+            float finalX = 0, finalY = 0;
+                if (impulse.heading > -.01 && impulse.heading < 90.01)//first quadrant
+                {
+                    impulse.transX =(float)Math.Sin((90 - impulse.heading))*impulse.force;
+                    impulse.transY = (float) Math.Cos((90 - impulse.heading))*impulse.force; //dont forget to divide by mass later!
+                    finalX += impulse.transX;
+                    finalY += impulse.transY;
+                }
+
+                Vector2 finalTrans = new Vector2(finalX/ship.mass, finalY/ship.mass); //vector.x or y cannot be individually modified, so avector is made.
+                ship.location += finalTrans;
+impulseList.Clear();
+            }
+
+
+
+              
+//TODO combine all impulses, make sure negatives work ok, start a race war
+
+
+
 
             if (ship.turnDir != Ship.TurnDir.NULL)
             {
@@ -140,9 +205,8 @@ namespace WindowsGame1.Engine.Handlers.Logic
             }
 
 
+
         Console.WriteLine("Processed movement for " + ship.shipName);
         }
-
-
     }
 }

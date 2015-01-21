@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using WindowsGame1.Engine.Game_Objects;
 using WindowsGame1.Engine.Game_Objects.Actors.Ships.Alliance;
 using WindowsGame1.Engine.Handlers;
@@ -13,7 +14,7 @@ namespace WindowsGame1.Engine.Actors
 
 //Graphics
 		static public Texture2D sprite { get; set; } //Single sprite for now.
-         public string spritePath{get; set;}
+		 public string spritePath{get; set;}
 		static public Texture2D damagedSprite { get; set; }
 		static public Texture2D veryDamagedSprite { get; set; }
 		static public Texture2D deadSprite { get; set; }
@@ -96,16 +97,15 @@ public string fileName { get; set; }
 		public float heading { get; set; } //direction the ship is facing
 		public float targetHeading{get; set; }
 		//Physics based movement
-		public struct Impulse
-		{
-			public int force;
-			public int duration;
-			public int heading;
-		}
+
 
 		public Point targetPoint { get; set; }
 		public int mass { get; set; }
 
+
+
+////DEPRECATED
+/*
 		public float thrustF { get; set; } //current
 		public float thrustP { get; set; }
 		public float thrustS { get; set; }
@@ -129,9 +129,11 @@ public string fileName { get; set; }
 		public float speedF { get; set; }//max
 		public float speedP { get; set; }
 		public float speedS { get; set; }
-		public float speedA { get; set; }
+		public float speedA { get; set; } */
+	////ABOVE IS DEPRECATED
 	
-	
+//THRUSTER ASSEMBLY
+public List<Thruster> thrusterList = new List<Thruster>(); 
 
 		public float RotSpeed { get; set; } //rotational speed
 		public float MRotSpeed { get; set; } //maximum
@@ -173,13 +175,6 @@ public string fileName { get; set; }
 		{
 			Lists.ShipClassList.Add(new ABattleship());
 		}
-
-
-
-
-
-
-
 	}
 
 

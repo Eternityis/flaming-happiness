@@ -7,5 +7,27 @@ namespace WindowsGame1.Engine.Game_Objects
     {
     public class Thruster
         {
+        public enum Direction
+        {
+            F, //thruster facing forward, moves you back.
+A, //main thruster
+S,
+P
+        }
+
+public Direction direction { get; set; }
+
+public float thrust = 0; //newtons
+public float mThrust { get; set; }
+
+public bool isFunctional  = true;
+public bool isActive = false;
+
+        public Thruster(Direction dir, float targMThrust)
+        {
+            direction = dir;
+            mThrust = targMThrust;
+        }
+
         }
     }
