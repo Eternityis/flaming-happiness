@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using WindowsGame1.Engine.Game_Objects;
 using WindowsGame1.Engine.Game_Objects.Actors.Ships.Alliance;
 using WindowsGame1.Engine.Handlers;
+using WindowsGame1.Engine.Handlers.Logic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -40,14 +41,7 @@ namespace WindowsGame1.Engine.Actors
 			FIGHTER
 		}
 
-		public enum TurnDir
-		{
-			LEFT,
-			RIGHT,
-			NULL
-		}
 
-public TurnDir turnDir { get; set; }
 
 
 		public ShipType shipType { get; set; }
@@ -161,7 +155,9 @@ public List<Thruster> thrusterList = new List<Thruster>();
 		public bool isHeadingLocked { get; set; }
 		//wont turn when moving, reduces speed all directions but forward by 60%
 		public bool isFireAtWill { get; set; }
-		public bool isReducedSpeed { get; set; } //Ship moves at 75% speed
+		public bool isReducedSpeed { get; set; }
+	    public NavPack.TurnDir turnDir { get; set; }
+//Ship moves at 75% speed
 
 
 //public methods

@@ -201,10 +201,33 @@ impulseList.Clear();
 
             if (ship.turnDir != Ship.TurnDir.NULL)
             {
-                //handle rotation
+            switch (ship.turnDir)
+                {
+                case Ship.TurnDir.LEFT:
+                    {
+                        ship.heading -= ship.RotSpeed; //TODO account for going past 0
+                        if (ship.RotSpeed > Math.Abs(ship.heading - ship.targetHeading)) //avoid overshooting
+                        {
+                            ship.heading = ship.targetHeading;
+                        }
+                        break;
+                    }
+                case Ship.TurnDir.RIGHT:
+                    {
+                        ship.heading += ship.RotSpeed;
+                        if (ship.RotSpeed > Math.Abs(ship.heading - ship.targetHeading)) //avoid overshooting
+                        {
+                            ship.heading = ship.targetHeading;
+                        }
+                        break;
+                    }
+                }
             }
 
-
+            if (ship.heading < 0)
+            {
+                ship.heading += 360
+            }
 
         Console.WriteLine("Processed movement for " + ship.shipName);
         }
