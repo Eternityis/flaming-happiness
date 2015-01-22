@@ -30,7 +30,6 @@ namespace WindowsGame1.Engine.Handlers.Logic
 
 
 		public Point targetPoint { get; set; }
-		public int mass { get; set; }
 
 
 

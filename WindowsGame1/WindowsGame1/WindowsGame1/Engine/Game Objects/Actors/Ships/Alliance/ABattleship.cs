@@ -58,8 +58,6 @@ hp = 1000;
 shielding = 500; //maximum range at which shields have a 50% chance of working
 supply = 500;    //total 
 supplyPerShot = 1; //base supply use per shot
-speed = 0; //current speed
-maxSpeed = 10; //maximum speed
 crew = crewCost;
 maxCrew = crewCost;
 
@@ -83,7 +81,6 @@ maxMissileStock = 12;
 missileStock = maxMissileStock;
 
 //Combat Settings
-isHeadingLocked = false;
 
 
 

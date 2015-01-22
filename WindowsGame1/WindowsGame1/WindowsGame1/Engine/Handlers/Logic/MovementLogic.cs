@@ -17,7 +17,7 @@ namespace WindowsGame1.Engine.Handlers.Logic
 
 //applied to each ship each tick
 
-       public static void applyMovementLogic(Ship ship, Point location, Point target)
+       public static void applyMovementLogic(Ship ship, Vector2 location, Point target) //tells ship where to go and shit. Triggers on clicks/orders
        {
            try
            {
@@ -27,11 +27,11 @@ namespace WindowsGame1.Engine.Handlers.Logic
                   {
                    ship.navPack.targetHeading += 360; //converts negative to positive, kind of like Pharrel Williams
                   }    
-               ship.heading = ship.navPack.targetHeading; //TODO replace with rotatino and stuff, just for testing.
+               ship.navPack.heading = ship.navPack.targetHeading; //TODO replace with rotatino and stuff, just for testing.
                //determine to turn clockwise or counterclockwise
-               if (!ship.navPack.isFacingTarget() && !ship.isHeadingLocked)
+               if (!ship.navPack.isFacingTarget() && !ship.navPack.isHeadingLocked)
               {
-                  if (Math.Abs(ship.heading - ship.navPack.targetHeading) > Math.Abs(ship.heading + 360 - ship.navPack.targetHeading))
+                  if (Math.Abs(ship.navPack.heading - ship.navPack.targetHeading) > Math.Abs(ship.navPack.heading + 360 - ship.navPack.targetHeading))
                   {
                       ship.navPack.turnDir = NavPack.TurnDir.RIGHT;
                   }
@@ -52,10 +52,15 @@ namespace WindowsGame1.Engine.Handlers.Logic
                Console.WriteLine("Something messed up in movement logic. " + location + "  " + target);
            }
    
-        }
+        } //end applymovementlogic()
 
 
-        public static void processMovement(Ship ship)
+
+
+
+
+
+        public static void processMovement(Ship ship) //runs on tick
         {
             if (ship.navPack.isFacingTarget())
             {
@@ -139,7 +144,7 @@ namespace WindowsGame1.Engine.Handlers.Logic
 
 */ //deprecated
 
-            foreach (Thruster thruster in ship.thrusterList)
+            foreach (Thruster thruster in ship.thrusterList) //TODO account for quadrants
             {
                 if (thruster.isActive)
                 {
@@ -149,22 +154,22 @@ namespace WindowsGame1.Engine.Handlers.Logic
 
                     case Thruster.Direction.F:
                     {
-                        detHeading = ship.heading + 180;
+                        detHeading = ship.navPack.heading + 180;
                             break;
                             }
                     case Thruster.Direction.A:
                     {
-                        detHeading = ship.heading;
+                        detHeading = ship.navPack.heading;
                                 break;
                                 }
                     case Thruster.Direction.S:
                     {
-                        detHeading = ship.heading - 90;
+                        detHeading = ship.navPack.heading - 90;
                                     break;
                                     }
                     case Thruster.Direction.P:
                     {
-                        detHeading = ship.heading + 90;
+                        detHeading = ship.navPack.heading + 90;
                             break;
                         }
 
@@ -187,8 +192,7 @@ namespace WindowsGame1.Engine.Handlers.Logic
                 }
 
                 Vector2 finalTrans = new Vector2(finalX/ship.mass, finalY/ship.mass); //vector.x or y cannot be individually modified, so avector is made.
-                ship.location += finalTrans;
-impulseList.Clear();
+                ship.navPack.location += finalTrans;
             }
 
 

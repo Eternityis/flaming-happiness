@@ -1,4 +1,5 @@
 ﻿using WindowsGame1.Engine.Actors;
+using WindowsGame1.Engine.Handlers.Logic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
@@ -82,7 +83,8 @@ namespace WindowsGame1.Engine.Handlers
                        //apply movement logic to ship with selectedLocation as target
                        foreach (Ship ship in Player.selectedShips)
                        {
-                           ship.targetPoint = selectedLocation; //sets clicked location as the ships target
+                           ship.navPack.targetPoint = selectedLocation; //sets clicked location as the ships target
+                           MovementLogic.applyMovementLogic(ship, ship.navPack.location, selectedLocation);
                        }
                    }
                }
@@ -132,7 +134,7 @@ namespace WindowsGame1.Engine.Handlers
                        {
                            foreach (Ship ship in Lists.ShipList)
                            {
-                               ship.targetHeading = 90;
+                               ship.navPack.targetHeading = 90;
                            }
                        }
                    if (mouseButtonHasChanged())

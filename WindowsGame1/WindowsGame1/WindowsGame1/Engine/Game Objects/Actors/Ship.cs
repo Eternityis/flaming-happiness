@@ -45,6 +45,7 @@ namespace WindowsGame1.Engine.Actors
 
 
 		public ShipType shipType { get; set; }
+		public int mass { get; set; }
 
 		public string shipClass { get; set; } //name displayed, ie: Cruiser
 		public string shipName { get; set; } //custom name, "IS Bismark"
