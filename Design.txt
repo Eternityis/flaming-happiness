@@ -30,3 +30,14 @@ Power: Ships have a maximum power output. Split between:
 	f = m*a
 	thrust = mass*acceleration
 	acceleration = thrust/mass
+	
+	
+	MOVEMENT:
+		for thrusters
+			generate impulse each tick.
+			Impulse headings:
+			0=360;
+			F = heading
+			A = heading + 180
+			S = heading-90
+			P = heading + 90

@@ -22,27 +22,27 @@ namespace WindowsGame1.Engine.Handlers.Logic
            try
            {
                float conversion = (float) 57.2957795; //convert radians to degrees
-               ship.targetHeading = (float) Math.Atan2(target.X - location.X, target.Y - location.Y)*conversion;  //dtermine target heading
-               if (ship.targetHeading < 0)
+               ship.navPack.targetHeading = (float) Math.Atan2(target.X - location.X, target.Y - location.Y)*conversion;  //dtermine target heading
+               if (ship.navPack.targetHeading < 0)
                   {
-                   ship.targetHeading += 360; //converts negative to positive, kind of like Pharrel Williams
+                   ship.navPack.targetHeading += 360; //converts negative to positive, kind of like Pharrel Williams
                   }    
-               ship.heading = ship.targetHeading; //TODO replace with rotatino and stuff, just for testing.
+               ship.heading = ship.navPack.targetHeading; //TODO replace with rotatino and stuff, just for testing.
                //determine to turn clockwise or counterclockwise
-               if (!ship.isFacingTarget() && !ship.isHeadingLocked)
+               if (!ship.navPack.isFacingTarget() && !ship.isHeadingLocked)
               {
-                  if (Math.Abs(ship.heading - ship.targetHeading) > Math.Abs(ship.heading + 360 - ship.targetHeading))
+                  if (Math.Abs(ship.heading - ship.navPack.targetHeading) > Math.Abs(ship.heading + 360 - ship.navPack.targetHeading))
                   {
-                      ship.turnDir = Ship.TurnDir.RIGHT;
+                      ship.navPack.turnDir = NavPack.TurnDir.RIGHT;
                   }
                   else
                   {
-                      ship.turnDir = Ship.TurnDir.LEFT;
+                      ship.navPack.turnDir = NavPack.TurnDir.LEFT;
                   }
                 
               }
 
-               else if (!ship.isFacingTarget())
+               else if (!ship.navPack.isFacingTarget())
                {
                    //cannot be reached currently TODO
                }
@@ -57,9 +57,9 @@ namespace WindowsGame1.Engine.Handlers.Logic
 
         public static void processMovement(Ship ship)
         {
-            if (ship.isFacingTarget())
+            if (ship.navPack.isFacingTarget())
             {
-                ship.turnDir = Ship.TurnDir.NULL;
+                ship.navPack.turnDir = NavPack.TurnDir.NULL;
             }
 /* 
 //calculate accelerations
@@ -199,25 +199,25 @@ impulseList.Clear();
 
 
 
-            if (ship.turnDir != Ship.TurnDir.NULL)
+            if (ship.navPack.turnDir != NavPack.TurnDir.NULL)
             {
-            switch (ship.turnDir)
+            switch (ship.navPack.turnDir)
                 {
-                case Ship.TurnDir.LEFT:
+                case NavPack.TurnDir.LEFT: //TODO check this
                     {
                         ship.heading -= ship.RotSpeed; //TODO account for going past 0
-                        if (ship.RotSpeed > Math.Abs(ship.heading - ship.targetHeading)) //avoid overshooting
+                        if (ship.RotSpeed > Math.Abs(ship.heading - ship.navPack.targetHeading)) //avoid overshooting
                         {
-                            ship.heading = ship.targetHeading;
+                            ship.heading = ship.navPack.targetHeading;
                         }
                         break;
                     }
-                case Ship.TurnDir.RIGHT:
+                case NavPack.TurnDir.RIGHT:
                     {
                         ship.heading += ship.RotSpeed;
-                        if (ship.RotSpeed > Math.Abs(ship.heading - ship.targetHeading)) //avoid overshooting
+                        if (ship.RotSpeed > Math.Abs(ship.heading - ship.navPack.targetHeading)) //avoid overshooting
                         {
-                            ship.heading = ship.targetHeading;
+                            ship.heading = ship.navPack.targetHeading;
                         }
                         break;
                     }
@@ -226,7 +226,7 @@ impulseList.Clear();
 
             if (ship.heading < 0)
             {
-                ship.heading += 360
+                ship.heading += 360;
             }
 
         Console.WriteLine("Processed movement for " + ship.shipName);

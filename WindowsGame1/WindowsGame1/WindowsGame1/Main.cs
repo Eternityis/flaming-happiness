@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -28,8 +28,8 @@ namespace WindowsGame1
             {
             graphics = new GraphicsDeviceManager(this);  //Resolution must be 4:3 or tiles wont be square, this is easy to fix but it makes more sense to just lock the res options honestly.
             graphics.IsFullScreen = false;         //not all screens are 4:3, and not enabling full screen totally presents that moonrune rpgmaker aesthetic we all know and love
-            graphics.PreferredBackBufferHeight = 600;  
-            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight = 720;  
+            graphics.PreferredBackBufferWidth = 1280;
             Content.RootDirectory = "Content";  //not used, we can probably remove soon, but leave for now, this is all just default xna code. Offloaded to ImageLoader.cs
             IsMouseVisible = true;
             }
@@ -46,6 +46,7 @@ namespace WindowsGame1
             
             base.Initialize();
             Console.WriteLine("Initialization Complete");
+          //  Console.WriteLine("Remember, (ง ° ل͜ °)ง ᴛʜᴇ ᴜɴsᴇᴇɴ ᴅᴏɴɢᴇʀ ɪs ᴛʜᴇ ᴅᴇᴀᴅʟɪᴇsᴛ (ง ° ل͜ °)ง");
             }
 
 

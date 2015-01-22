@@ -82,19 +82,6 @@ public string fileName { get; set; }
 
 
 
-//Spawning
-		public Vector2 location { get; set; } //location of ship
-
-//Movement
-		public int speed { get; set; } //current speed
-		public int maxSpeed { get; set; } //maximum speed forward
-		public float heading { get; set; } //direction the ship is facing
-		public float targetHeading{get; set; }
-		//Physics based movement
-
-
-		public Point targetPoint { get; set; }
-		public int mass { get; set; }
 
 
 
@@ -152,20 +139,16 @@ public List<Thruster> thrusterList = new List<Thruster>();
 
 
 //Combat Settings
-		public bool isHeadingLocked { get; set; }
 		//wont turn when moving, reduces speed all directions but forward by 60%
 		public bool isFireAtWill { get; set; }
 		public bool isReducedSpeed { get; set; }
-	    public NavPack.TurnDir turnDir { get; set; }
 //Ship moves at 75% speed
 
 
+	    public  NavPack navPack = new NavPack();
+
 //public methods
 
-		public bool isFacingTarget()
-		{
-			return (heading == targetHeading);
-		}
 
 		public static void generateShipClassList()
 		{
