@@ -88,37 +88,37 @@ public string fileName { get; set; }
 
 ////DEPRECATED
 /*
-		public float thrustF { get; set; } //current
-		public float thrustP { get; set; }
-		public float thrustS { get; set; }
-		public float thrustA { get; set; }
-		public float mThrustF { get; set; } //maximum
-		public float mThrustP { get; set; }
-		public float mThrustS { get; set; }
-		public float mThrustA { get; set; }
+		public double thrustF { get; set; } //current
+		public double thrustP { get; set; }
+		public double thrustS { get; set; }
+		public double thrustA { get; set; }
+		public double mThrustF { get; set; } //maximum
+		public double mThrustP { get; set; }
+		public double mThrustS { get; set; }
+		public double mThrustA { get; set; }
 		public bool disabledF { get; set; } //is controllable
 		public bool disabledP { get; set; }
 		public bool disabledS { get; set; }
 		public bool disabledA { get; set; }
-		public float accelF { get; set; }//current
-		public float accelP { get; set; }
-		public float accelS { get; set; }
-		public float accelA { get; set; }
-		public float mAccelF { get; set; }//max
-		public float mAccelP { get; set; }
-		public float mAccelS { get; set; }
-		public float mAccelA { get; set; }
-		public float speedF { get; set; }//max
-		public float speedP { get; set; }
-		public float speedS { get; set; }
-		public float speedA { get; set; } */
+		public double accelF { get; set; }//current
+		public double accelP { get; set; }
+		public double accelS { get; set; }
+		public double accelA { get; set; }
+		public double mAccelF { get; set; }//max
+		public double mAccelP { get; set; }
+		public double mAccelS { get; set; }
+		public double mAccelA { get; set; }
+		public double speedF { get; set; }//max
+		public double speedP { get; set; }
+		public double speedS { get; set; }
+		public double speedA { get; set; } */
 	////ABOVE IS DEPRECATED
 	
 //THRUSTER ASSEMBLY
 public List<Thruster> thrusterList = new List<Thruster>(); 
 
-		public float RotSpeed { get; set; } //rotational speed
-		public float MRotSpeed { get; set; } //maximum
+		public double RotSpeed { get; set; } //rotational speed
+		public double MRotSpeed { get; set; } //maximum
 
 		
 

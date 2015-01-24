@@ -116,16 +116,16 @@ spriteBatch.Begin();
      
     foreach (Ship ship in Lists.ShipList)
      {
-         spriteBatch.Draw(Ship.sprite, ship.shipRect, null, Color.White, ship.heading/(float)57.2957795, new Vector2(0,0) , SpriteEffects.None, 0);
-        Console.WriteLine("ship target heading is "+ ship.targetHeading);
+         spriteBatch.Draw(Ship.sprite, ship.shipRect, null, Color.White, (float)(ship.navPack.heading/57.2957795), new Vector2(0,0) , SpriteEffects.None, 0);
+        Console.WriteLine("ship target heading is "+ ship.navPack.targetHeading);
      }
 
 
 Vector2 target = new Vector2(0, 0);
 Vector2 location = new Vector2(0, 0);
-     float targetHeading;
-     float conversion = (float)57.2957795; //convert radians to degrees
-     targetHeading = (float)Math.Atan2(target.X - location.X, target.Y - location.Y)*conversion; //TODO testing the formula
+     double targetHeading;
+     double conversion = (double)57.2957795; //convert radians to degrees
+     targetHeading = (double)Math.Atan2(target.X - location.X, target.Y - location.Y)*conversion; //TODO testing the formula
      if (targetHeading < 0)
      {
          targetHeading += 360;
@@ -142,7 +142,7 @@ Console.WriteLine(targetHeading);
 
 
             spriteBatch.End();
-float frameRate = 1 / (float)gameTime.ElapsedGameTime.TotalSeconds; //calculates framerate
+double frameRate = 1 / (double)gameTime.ElapsedGameTime.TotalSeconds; //calculates framerate
 Console.WriteLine("Framerate: " + frameRate);
             base.Draw(gameTime);
          Console.WriteLine("Draw Loop End");

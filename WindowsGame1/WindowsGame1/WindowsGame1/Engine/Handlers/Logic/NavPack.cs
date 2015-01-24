@@ -24,8 +24,8 @@ namespace WindowsGame1.Engine.Handlers.Logic
 //Movement
 		public int speed { get; set; } //current speed
 		public int maxSpeed { get; set; } //maximum speed forward
-		public float heading { get; set; } //direction the ship is facing
-		public float targetHeading{get; set; }
+		public double heading { get; set; } //direction the ship is facing
+		public double targetHeading{get; set; }
 		//Physics based movement
 
 
@@ -33,7 +33,7 @@ namespace WindowsGame1.Engine.Handlers.Logic
 
 
 
-List<Impulse> impulseList = new List<Impulse>(); 
+public List<Impulse> impulseList = new List<Impulse>(); 
 
 		public enum TurnDir
 		{
@@ -41,6 +41,8 @@ List<Impulse> impulseList = new List<Impulse>();
 			RIGHT,
 			NULL
 		}
+
+		public Impulse actingImpulse = new Impulse(0,0); //after resolving all forces, map the composite to this and clear the list of all others.  Clear then add is mosteffecient
 
 		public TurnDir turnDir { get; set; }
 
@@ -69,7 +71,7 @@ List<Impulse> impulseList = new List<Impulse>();
 			isAccel = false;
 			isDecel = false;
 			turnDir = TurnDir.NULL;
-		    location = loc;
+			location = loc;
 		}
 
 	}

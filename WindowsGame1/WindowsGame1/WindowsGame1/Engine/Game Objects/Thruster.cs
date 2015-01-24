@@ -17,13 +17,13 @@ P
 
 public Direction direction { get; set; }
 
-public float thrust = 0; //newtons
-public float mThrust { get; set; }
+public double thrust = 0; //newtons
+public double mThrust { get; set; }
 
 public bool isFunctional  = true;
 public bool isActive = false;
 
-        public Thruster(Direction dir, float targMThrust)
+        public Thruster(Direction dir, double targMThrust)
         {
             direction = dir;
             mThrust = targMThrust;

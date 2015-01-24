@@ -5,6 +5,7 @@ using System.Text;
 using WindowsGame1.Engine;
 using WindowsGame1.Engine.Actors;
 using WindowsGame1.Engine.Handlers;
+using WindowsGame1.Engine.Handlers.Logic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
@@ -61,7 +62,6 @@ supplyPerShot = 1; //base supply use per shot
 crew = crewCost;
 maxCrew = crewCost;
 
-location = spawnpoint;
 
 //weapons
 	//Lasers
@@ -100,9 +100,10 @@ this.thrusterList.Add(new Thruster(Thruster.Direction.S, 25 ));
 
 
 
-shipRect = new Rectangle((int)location.X, (int)location.Y, Constants.BattleshipWidth, Constants.BattleshipLength);
+shipRect = new Rectangle((int)navPack.location.X, (int)navPack.location.Y, Constants.BattleshipWidth, Constants.BattleshipLength);
 PurchaseHandling.handlePurchase(this);
 Lists.ShipList.Add(this);
+navPack.location = spawnpoint;
 
 
 		}//end of constructor
