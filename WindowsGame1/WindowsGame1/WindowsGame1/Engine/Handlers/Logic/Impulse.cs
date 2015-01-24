@@ -31,6 +31,7 @@ namespace WindowsGame1.Engine.Handlers.Logic
             compForces.X = (float)(f*Math.Cos(h*toRad)); //TODO create a new vector type that accepts two doubles
             compForces.Y = (float)(f*Math.Sin(h*toRad));
             Console.WriteLine("Bob.  force: " + force + " X: "+ compForces.X + " Y: " + compForces.Y + " Y from eq: " + f*Math.Sin(h) + " Heading: " + heading);
+           if (heading < 0){heading = 360 - Math.Abs(heading);} // fix negative headings
         }
 
        public Impulse(Vector2 vec) //takes input of forces as avector, (the y and x components already calculated) and determines the impulses direction and force in dir
@@ -39,11 +40,12 @@ namespace WindowsGame1.Engine.Handlers.Logic
            compForces = vec;  //save the component forces as a vector
            heading = Math.Atan2(vec.X, vec.Y)*conversion; //calculate heading from component forces
            force = Math.Sqrt((vec.X*vec.X + vec.Y*vec.Y)); //pythagorean to get force from components.  Multiplying is faster than using Math.Pow()
+           if (heading < 0){heading = 360 - Math.Abs(heading);} //fix negative headings
        }
 
 
 
-       public static void solveImpulse(double x, double y, Impulse i)
+       public static void solveImpulse(double x, double y, Impulse i) //shouldnt be needed anymore, TODO remove or overload
        {
            i.heading = Math.Atan2(x, y)*conversion; //calculate heading from component forces
            i.force = Math.Sqrt((x*x + y*y)); //pythagorean to get force from components.  Multiplying is faster than using Math.Pow()

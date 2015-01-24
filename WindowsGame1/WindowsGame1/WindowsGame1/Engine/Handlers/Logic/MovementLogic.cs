@@ -65,7 +65,7 @@ namespace WindowsGame1.Engine.Handlers.Logic
                 ship.navPack.turnDir = NavPack.TurnDir.NULL;
             }
 
-            foreach (Thruster thruster in ship.thrusterList) //TODO account for quadrants
+            foreach (Thruster thruster in ship.thrusterList) //TODO account for quadrants/negatives
             {
                 if (thruster.isActive)
                 {
